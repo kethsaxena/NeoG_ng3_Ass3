@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Get your WA ME link just from a click"
+    />
+    <title>⌚️ ETA</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="container">
+       <nav id="custom-nav">
+      <ul>
+          <li><a href="index.html">Tripwise Tools</a></li>
+          <li><a href="ASC.html">Average Speed Calculator</a></li>
+          <li><a href="ETA.html">ETA Calculator</a></li>
+          <li><a href="FCC.html">Fuel Cost Calculator</a></li>
+          <li><a href="ICE.html">Itinerary Cost Estimator</a></li>
+        </ul>
+      </nav>
+      <hgroup>
+        <h1>Estimated Time of Arrival</h1>
+        <p>Calculate the time taken for a given distance and average speed taken to travel</p>
+      </hgroup>
+    </header>
+    <main class="container">
+      <div id="app">
+        <input id="dist" type ="number" placeholder="Enter distance(Km)" />
+        <input id="speed" type ="number" placeholder="Enter Speed(Km/Hours)" />
+        <br/>
+        <input type="button" id="calcETA" value="Calculate ETA / Time taken" />
+      </div>
+       <section>
+        <p id="result"></p>
+      </section>
+    </main>
+<script id="NeoG_ng1_Ass2">
+    // Select elements
+    const inputDistance = document.getElementById("dist");
+    const inputSpeed = document.getElementById("speed");
+    const buttonGenerate = document.getElementById("calcETA");
+    const result = document.getElementById("result");
+
+
+    // Function to generate WhatsApp link
+    function getAvgSpeed(dist, time) {
+      let speed  = parseFloat(dist.replace(/[^\d]/g, ''))/parseFloat(time.replace(/[^\d]/g, ''));
+      return  speed;
+    }
+
+    // Handle click
+    function calcAvgSpeedClick () {
+      // Generate URL
+      const TDist = inputDistance.value;
+      const AvgSpeed = inputSpeed.value
+
+      const Ttime = getAvgSpeed(TDist, AvgSpeed).toFixed(2);
+      
+      
+      
+
+      if (Ttime) {
+        result.innerText = `ETA: ${Ttime} hours`;
+      }
+      else{
+        result.innerText = `Try Again: Soemthing Went Wrong`;
+      }
+      
+    }
+
+    // Event Listener
+    buttonGenerate.addEventListener("click", calcAvgSpeedClick );
+</script>
+
+  </body>
+</html>

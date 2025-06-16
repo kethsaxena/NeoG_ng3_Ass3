@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Get your WA ME link just from a click"
+    />
+    <title>🚗 ASC</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="container">
+       <nav id="custom-nav">
+      <ul>
+          <li><a href="index.html">Tripwise Tools</a></li>
+          <li><a href="ASC.html">Average Speed Calculator</a></li>
+          <li><a href="ETA.html">ETA Calculator</a></li>
+          <li><a href="FCC.html">Fuel Cost Calculator</a></li>
+          <li><a href="ICE.html">Itinerary Cost Estimator</a></li>
+        </ul>
+      </nav>
+      <hgroup>
+        <h1>Average Speed Calculator</h1>
+        <p>Calculate the average speed given the total distance, and total time take to travel</p>
+      </hgroup>
+    </header>
+    <main class="container">
+      <div id="app">
+        <input id="dist" type ="number" placeholder="Enter distance(KM)" />
+        <input id="time" type ="number" placeholder="Enter Time(Hours)" />
+        <br/>
+        <input type="button" id="calcSpeed" value="Calculate Speed" />
+      </div>
+       <section>
+        <p id="result"></p>
+      </section>
+    </main>
+<script id="NeoG_ng1_Ass2">
+    // Select elements
+    const inputDistance = document.getElementById("dist");
+    const inputTime = document.getElementById("time");
+    const buttonGenerate = document.getElementById("calcSpeed");
+    const result = document.getElementById("result");
+
+
+    // Function to generate WhatsApp link
+    function getAvgSpeed(dist, time) {
+      let speed  = parseFloat(dist.replace(/[^\d]/g, ''))/parseFloat(time.replace(/[^\d]/g, ''));
+      return  speed;
+    }
+
+    // Handle click
+    function calcAvgSpeedClick () {
+      // Generate URL
+      const TDist = inputDistance.value;
+      const Ttime = inputTime.value
+
+      const avgSpeed = getAvgSpeed(TDist, Ttime);
+      
+      
+      
+
+      if (avgSpeed) {
+        result.innerText = `Your average speed: ${avgSpeed} km/hr`;
+      }
+      else{
+        result.innerText = `Try Again: Soemthing Went Wrong`;
+      }
+      
+    }
+
+    // Event Listener
+    buttonGenerate.addEventListener("click", calcAvgSpeedClick );
+</script>
+
+  </body>
+</html>
